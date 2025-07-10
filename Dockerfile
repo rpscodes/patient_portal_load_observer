@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install flask aiohttp
+RUN pip install "flask[async]==2.3.3" aiohttp==3.9.3
 
 EXPOSE 5000
 
