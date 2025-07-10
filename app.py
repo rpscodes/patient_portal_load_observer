@@ -31,13 +31,10 @@ def index():
         
         <main class="main-content">
             <div class="page-header">
-                <div class="breadcrumb">
-                    <a href="#">Services</a> > payment-processor
-                </div>
                 <h1>payment-processor</h1>
             </div>
             
-            <div class="dashboard-grid">
+            <div class="dashboard-grid" id="dashboardGrid">
                 <div class="card">
                     <div class="card-header">
                         <h2>Load Test Control</h2>
@@ -58,7 +55,7 @@ def index():
                     </div>
                 </div>
                 
-                <div class="card" id="resultsSection">
+                <div class="card" id="resultsSection" style="display: none;">
                     <div class="card-header">
                         <h2>Traffic Distribution</h2>
                     </div>

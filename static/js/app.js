@@ -12,6 +12,8 @@ async function runTest() {
     spinner.style.display = 'block';
     statusMessage.style.display = 'none';
     resultsSection.style.display = 'none';
+    document.getElementById('dashboardGrid').classList.remove('has-results');
+    document.getElementById('statsGrid').classList.remove('show');
     
     try {
         // Start the test
@@ -30,8 +32,10 @@ async function runTest() {
         // Update stats
         updateStats(data);
         
-        // Show results
+        // Show results and adjust layout
         resultsSection.style.display = 'block';
+        document.getElementById('dashboardGrid').classList.add('has-results');
+        document.getElementById('statsGrid').classList.add('show');
         
     } catch (error) {
         showStatusMessage('Error running test: ' + error.message, 'error');
