@@ -366,7 +366,7 @@ def index():
 @app.route('/run')
 async def run_test():
     global results
-    results = {"processed-at-azure": 0, "processed-at-datacentre": 0}
+    results = {"payment-processed-at-azure": 0, "processed-at-datacentre": 0}
 
     semaphore = asyncio.Semaphore(CONCURRENCY)
 
