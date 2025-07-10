@@ -19,7 +19,6 @@ body {
     padding: 12px 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -27,11 +26,6 @@ body {
     font-size: 1.125rem;
     font-weight: 600;
     margin: 0;
-}
-
-.header .user-info {
-    font-size: 0.875rem;
-    color: #c9c9c9;
 }
 
 .main-content {
@@ -69,7 +63,7 @@ body {
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 400px 1fr;
     gap: 24px;
     margin-bottom: 24px;
 }
@@ -250,14 +244,16 @@ body {
     letter-spacing: 0.05em;
 }
 
-@media (max-width: 768px) {
-    .main-content {
-        padding: 16px;
-    }
-    
+@media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 1fr;
         gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 16px;
     }
     
     .stats-grid {

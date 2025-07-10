@@ -27,7 +27,6 @@ def index():
     <body>
         <header class="header">
             <h1>Payment Processor Load Test</h1>
-            <div class="user-info">admin@cluster.local</div>
         </header>
         
         <main class="main-content">
