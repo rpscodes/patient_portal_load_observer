@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadbalancer-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loadbalancer-app
+  template:
+    metadata:
+      labels:
+        app: loadbalancer-app
+    spec:
+      containers:
+        - name: loadbalancer-app
+          image: quay.io/rhsi-rhdp-lab/loadbalancer-app:latest
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-app
+spec:
+  selector:
+    app: loadbalancer-app
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: loadbalancer-app
+spec:
+  to:
+    kind: Service
+    name: loadbalancer-app
+  port:
+    targetPort: 5000
+  tls:
+    termination: edge
