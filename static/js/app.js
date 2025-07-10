@@ -8,7 +8,7 @@ async function runTest() {
     
     // Reset UI
     button.disabled = true;
-    button.querySelector('span').textContent = 'Running Test...';
+    button.querySelector('span').textContent = 'Making 100 calls to payment processor...';
     spinner.style.display = 'block';
     statusMessage.style.display = 'none';
     resultsSection.style.display = 'none';
@@ -108,24 +108,49 @@ function updateStats(data) {
     
     statsGrid.innerHTML = `
         <div class="stat-card">
-            <div class="stat-value">${data["payment-processed-at-azure"]}</div>
-            <div class="stat-label">Azure Responses</div>
+            <div class="stat-card-header">
+                <h3>Azure Responses</h3>
+            </div>
+            <div class="stat-card-body">
+                <div class="stat-value azure">${data["payment-processed-at-azure"]}</div>
+                <div class="stat-label">Total</div>
+            </div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">${data["processed-at-datacentre"]}</div>
-            <div class="stat-label">Datacentre Responses</div>
+            <div class="stat-card-header">
+                <h3>Datacentre Responses</h3>
+            </div>
+            <div class="stat-card-body">
+                <div class="stat-value datacenter">${data["processed-at-datacentre"]}</div>
+                <div class="stat-label">Total</div>
+            </div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">${total}</div>
-            <div class="stat-label">Total Requests</div>
+            <div class="stat-card-header">
+                <h3>Total Requests</h3>
+            </div>
+            <div class="stat-card-body">
+                <div class="stat-value">${total}</div>
+                <div class="stat-label">Processed</div>
+            </div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">${total > 0 ? ((data["payment-processed-at-azure"] / total * 100).toFixed(1) + '%') : '0%'}</div>
-            <div class="stat-label">Azure Percentage</div>
+            <div class="stat-card-header">
+                <h3>Azure Percentage</h3>
+            </div>
+            <div class="stat-card-body">
+                <div class="stat-value azure">${total > 0 ? ((data["payment-processed-at-azure"] / total * 100).toFixed(1) + '%') : '0%'}</div>
+                <div class="stat-label">Of Total</div>
+            </div>
         </div>
         <div class="stat-card">
-            <div class="stat-value">${total > 0 ? ((data["processed-at-datacentre"] / total * 100).toFixed(1) + '%') : '0%'}</div>
-            <div class="stat-label">Datacentre Percentage</div>
+            <div class="stat-card-header">
+                <h3>Datacentre Percentage</h3>
+            </div>
+            <div class="stat-card-body">
+                <div class="stat-value datacenter">${total > 0 ? ((data["processed-at-datacentre"] / total * 100).toFixed(1) + '%') : '0%'}</div>
+                <div class="stat-label">Of Total</div>
+            </div>
         </div>
     `;
 } 

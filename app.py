@@ -20,36 +20,59 @@ def index():
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Payment Processor Load Test</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
-        <div class="container">
-            <h1>Payment Processor</h1>
-            <p class="subtitle">Load Test Dashboard</p>
-            
-            <div class="test-controls">
-                <button class="test-button" onclick="runTest()" id="testButton">
-                    <span>Start Load Test</span>
-                </button>
-            </div>
-            
-            <div class="loading-spinner" id="loadingSpinner">
-                <div class="spinner"></div>
-                <p>Running load test...</p>
-            </div>
-            
-            <div class="status-message" id="statusMessage"></div>
-            
-            <div class="results-section" id="resultsSection">
-                <h2 class="results-title">Test Results</h2>
-                <div class="chart-container">
-                    <canvas id="resultsChart"></canvas>
+        <header class="header">
+            <h1>Payment Processor Load Test</h1>
+            <div class="user-info">admin@cluster.local</div>
+        </header>
+        
+        <main class="main-content">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="#">Services</a> > payment-processor
                 </div>
-                <div class="stats-grid" id="statsGrid"></div>
+                <h1>payment-processor</h1>
             </div>
-        </div>
+            
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Load Test Control</h2>
+                    </div>
+                    <div class="card-body centered">
+                        <div class="control-panel">
+                            <button class="test-button" onclick="runTest()" id="testButton">
+                                <span>Start Load Test</span>
+                            </button>
+                            
+                            <div class="loading-spinner" id="loadingSpinner">
+                                <div class="spinner"></div>
+                                <p>Making 100 calls to payment processor...</p>
+                            </div>
+                            
+                            <div class="status-message" id="statusMessage"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" id="resultsSection">
+                    <div class="card-header">
+                        <h2>Traffic Distribution</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="resultsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid" id="statsGrid"></div>
+        </main>
         
                 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     </body>
