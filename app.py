@@ -30,7 +30,7 @@ def index():
             
             body {
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, #EE0000 0%, #A30000 100%);
                 min-height: 100vh;
                 display: flex;
                 align-items: center;
@@ -41,7 +41,7 @@ def index():
             .container {
                 background: white;
                 border-radius: 20px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                box-shadow: 0 20px 40px rgba(238, 0, 0, 0.15);
                 padding: 40px;
                 max-width: 800px;
                 width: 100%;
@@ -67,7 +67,7 @@ def index():
             }
             
             .test-button {
-                background: linear-gradient(45deg, #667eea, #764ba2);
+                background: linear-gradient(45deg, #000000, #A30000);
                 color: white;
                 border: none;
                 padding: 15px 40px;
@@ -78,12 +78,12 @@ def index():
                 font-weight: 600;
                 letter-spacing: 1px;
                 text-transform: uppercase;
-                box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             }
             
             .test-button:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+                box-shadow: 0 8px 25px rgba(238, 0, 0, 0.4);
             }
             
             .test-button:active {
@@ -105,7 +105,7 @@ def index():
                 width: 40px;
                 height: 40px;
                 border: 4px solid #f3f3f3;
-                border-top: 4px solid #667eea;
+                border-top: 4px solid #EE0000;
                 border-radius: 50%;
                 animation: spin 1s linear infinite;
                 margin: 0 auto;
@@ -174,7 +174,7 @@ def index():
             .stat-value {
                 font-size: 2em;
                 font-weight: bold;
-                color: #667eea;
+                color: #EE0000;
             }
             
             .stat-label {
@@ -301,15 +301,15 @@ def index():
                     data: {
                         labels: ['Azure Responses', 'Datacentre Responses'],
                         datasets: [{
-                            data: [data["processed-at-azure"], data["processed-at-datacentre"]],
-                            backgroundColor: [
-                                '#667eea',
-                                '#764ba2'
-                            ],
-                            borderColor: [
-                                '#5a67d8',
-                                '#6b46c1'
-                            ],
+                            data: [data["payment-processed-at-azure"], data["processed-at-datacentre"]],
+                                                    backgroundColor: [
+                            '#EE0000',
+                            '#000000'
+                        ],
+                        borderColor: [
+                            '#A30000',
+                            '#333333'
+                        ],
                             borderWidth: 2
                         }]
                     },
@@ -337,11 +337,11 @@ def index():
             
             function updateStats(data) {
                 const statsGrid = document.getElementById('statsGrid');
-                const total = data["processed-at-azure"] + data["processed-at-datacentre"];
+                const total = data["payment-processed-at-azure"] + data["processed-at-datacentre"];
                 
                 statsGrid.innerHTML = `
                     <div class="stat-card">
-                        <div class="stat-value">${data["processed-at-azure"]}</div>
+                        <div class="stat-value">${data["payment-processed-at-azure"]}</div>
                         <div class="stat-label">Azure Responses</div>
                     </div>
                     <div class="stat-card">
@@ -353,8 +353,12 @@ def index():
                         <div class="stat-label">Total Requests</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">${total > 0 ? ((data["processed-at-azure"] / total * 100).toFixed(1) + '%') : '0%'}</div>
+                        <div class="stat-value">${total > 0 ? ((data["payment-processed-at-azure"] / total * 100).toFixed(1) + '%') : '0%'}</div>
                         <div class="stat-label">Azure Percentage</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">${total > 0 ? ((data["processed-at-datacentre"] / total * 100).toFixed(1) + '%') : '0%'}</div>
+                        <div class="stat-label">Datacentre Percentage</div>
                     </div>
                 `;
             }
